@@ -73,6 +73,18 @@ class ShoppingCart {
   List<MediaItem> filterByMaxPrice(double maxPrice) {
     return _items.where((item) => item.price <= maxPrice).toList();
   }
+
+  void printReceipt() {
+    print('Receipt:');
+
+    for (MediaItem item in _items) {
+      print(item.getDetails());
+
+      if (item is Downloadable) {
+        item.download(item.title);
+      }
+    }
+  }
 }
 
 void main() {}

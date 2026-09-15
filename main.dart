@@ -54,4 +54,12 @@ class EBook extends MediaItem with Downloadable {
   }
 }
 
+class ShoppingCart {
+  final List<MediaItem> _items = [];
+
+  void addItem(MediaItem item) {
+    _items.add(item);
+  }
+}
+
 void main() {}

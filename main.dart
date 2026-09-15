@@ -12,4 +12,10 @@ abstract class MediaItem {
   String getDetails();
 }
 
+mixin Downloadable {
+  void download(String title) {
+    print('Downloading $title...');
+  }
+}
+
 void main() {}

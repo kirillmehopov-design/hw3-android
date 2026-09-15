@@ -87,4 +87,54 @@ class ShoppingCart {
   }
 }
 
-void main() {}
+void main() {
+  ShoppingCart cart = ShoppingCart();
+
+  Audiobook audiobook1 = Audiobook(
+    id: 'A1',
+    title: 'Atomic Habits',
+    price: 18.0,
+    durationHours: 5.5,
+    narrator: 'James Clear',
+  );
+
+  Audiobook audiobook2 = Audiobook(
+    id: 'A2',
+    title: 'The Hobbit',
+    price: 22.0,
+    durationHours: 11.0,
+    narrator: 'Andy Serkis',
+  );
+
+  EBook ebook1 = EBook(
+    id: 'E1',
+    title: 'Clean Code',
+    price: 15.0,
+    fileSizeMB: 4.5,
+    author: 'Robert C. Martin',
+  );
+
+  EBook ebook2 = EBook(
+    id: 'E2',
+    title: '1984',
+    price: 9.0,
+    fileSizeMB: 2.1,
+    author: 'George Orwell',
+  );
+
+  cart.addItem(audiobook1);
+  cart.addItem(audiobook2);
+  cart.addItem(ebook1);
+  cart.addItem(ebook2);
+
+  cart.printReceipt();
+
+  print('Total with tax: ${cart.calculateTotalWithTax()}');
+
+  print('Items with price <= 15:');
+  List<MediaItem> filteredItems = cart.filterByMaxPrice(15.0);
+
+  for (MediaItem item in filteredItems) {
+    print(item.getDetails());
+  }
+}

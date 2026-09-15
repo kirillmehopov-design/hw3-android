@@ -60,6 +60,19 @@ class ShoppingCart {
   void addItem(MediaItem item) {
     _items.add(item);
   }
+
+  double calculateTotalWithTax({double taxRate = 0.12}) {
+    double subtotal = _items.fold(
+      0.0,
+      (sum, item) => sum + item.price,
+    );
+
+    return subtotal + subtotal * taxRate;
+  }
+
+  List<MediaItem> filterByMaxPrice(double maxPrice) {
+    return _items.where((item) => item.price <= maxPrice).toList();
+  }
 }
 
 void main() {}
